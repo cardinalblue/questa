@@ -23,16 +23,24 @@ var Animation = require('Animation');
 var Scene = require('Scene');
 var TouchGestures = require('TouchGestures');
 
+// -------------------------------------------------------------------------------
+// Utility
+
 function log(...args) { Diagnostics.log(...args); }
 
+// -------------------------------------------------------------------------------
 // Base elements
+
 var   base 	 	= Scene.root.child("Device").child("Camera").child("Focal Distance");
 var   canvas 	= base.child("2DCanvas0");
 const text0  	= canvas.child("text0");
 const rect0   = canvas.child("rect0");
 
+// -------------------------------------------------------------------------------
+// Main
+
 var n = 0;
-const n$ = TouchGestures.onTap(rect0).subscribe(e => {
+TouchGestures.onTap(rect0).subscribe(e => {
 	n = n + 1;
 	text0.text = '' + n;
 });
